@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [],
+    domains: [process.env.WP_IMAGES_URL], // Add your domain here
+    // domains: ['propery-sale.local'], // Add your domain here
   },
 };
 
