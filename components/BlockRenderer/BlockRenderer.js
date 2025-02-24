@@ -1,9 +1,10 @@
 import { CallToActionButton } from "components/CallToActionButton";
-import { Column } from "components/Column/column";
+import { Column } from "components/Column";
 import { Columns } from "components/Columns";
 import { Cover } from "components/cover/Cover";
 import { Heading } from "components/Heading/Heading";
 import { Paragraph } from "components/Paragraph";
+import { PropertySearch } from "components/propretySearch/PropertySearch";
 import Image from "next/image";
 import { theme } from "theme";
 
@@ -35,6 +36,8 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
+
+      case "core/post-title":
       case "core/heading": {
         return (
           <Heading
@@ -44,6 +47,10 @@ export const BlockRenderer = ({ blocks }) => {
             textAlign={block.attributes.textAlign}
           />
         );
+      }
+
+      case "acf/propertysearch": {
+        return <PropertySearch key={block.id} />;
       }
       case "core/cover": {
         return (
@@ -69,6 +76,11 @@ export const BlockRenderer = ({ blocks }) => {
           </Column>
         );
       }
+      case "core/block":
+      case "core/group": {
+        return <BlockRenderer key={block.id} blocks={block.innerBlocks} />;
+      }
+
       case "core/image": {
         return (
           <Image
@@ -80,6 +92,7 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
+
       default: {
         console.log("Unknown", block);
         return null;
