@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Results } from "./Results/Results";
 import { Pagination } from "./Pagination";
 import { useRouter } from "next/router";
 import queryString from "query-string";
 import { Filters } from "./Filters";
+import { Results } from "./Results";
 
 export const PropertySearch = () => {
   const [properties, setProperties] = useState([]);

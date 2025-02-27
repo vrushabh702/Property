@@ -1,16 +1,37 @@
 import { CallToActionButton } from "components/CallToActionButton";
 import { Column } from "components/Column";
 import { Columns } from "components/Columns";
-import { Cover } from "components/cover/Cover";
+import { Cover } from "components/Cover/Cover";
+import { FormSpreeForm } from "components/FormspreeForm";
 import { Heading } from "components/Heading/Heading";
 import { Paragraph } from "components/Paragraph";
-import { PropertySearch } from "components/propretySearch/PropertySearch";
+import { PropertyFeatures } from "components/PropertyFeatures";
+import { PropertySearch } from "components/PropretySearch";
 import Image from "next/image";
 import { theme } from "theme";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/propertyfeatures": {
+        <PropertyFeatures
+          key={block.id}
+          price={block.attributes.price}
+          bathrooms={block.attributes.bathrooms}
+          bedrooms={block.attributes.bedrooms}
+          hasParking={block.attributes.has_parking}
+          petFriendly={block.attributes.pet_friendly}
+        />;
+      }
+      case "acf/formspreeform": {
+        return (
+          <FormSpreeForm
+            key={block.id}
+            formId={block.attributes.data.form_id}
+          />
+        );
+      }
+
       case "acf/ctabutton": {
         console.log("block blockrender", block.attributes);
         return (

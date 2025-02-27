@@ -21,9 +21,9 @@ const handler = async (req, res) => {
     }
 
     if (filters.petFriendly) {
-      hasParkingFilter = `
+      petFriendlyFilter = `
       {
-        key:"has_parking"
+        key:"pet_friendly"
         compare:EQUAL_TO
         value:"1"
       },
@@ -37,7 +37,7 @@ const handler = async (req, res) => {
         compare:GREATER_THAN_OR_EQUAL_TO
         value : ${filters.minPrice}
 				type :NUMERIC
-      }
+      },
       `;
     }
 
@@ -48,7 +48,7 @@ const handler = async (req, res) => {
         compare:LESS_THAN_OR_EQUAL_TO
         value : ${filters.maxPrice}
 				type :NUMERIC
-      }
+      },
       `;
     }
 
@@ -86,7 +86,7 @@ const handler = async (req, res) => {
                 bathrooms
                 bedrooms
                 hasParking
-                perFriendly
+                petFriendly
                 price
               }
             }
