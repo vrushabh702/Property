@@ -5,8 +5,9 @@ import { Cover } from "components/Cover/Cover";
 import { FormSpreeForm } from "components/FormspreeForm";
 import { Heading } from "components/Heading/Heading";
 import { Paragraph } from "components/Paragraph";
+import { PostTitle } from "components/PostTitle";
 import { PropertyFeatures } from "components/PropertyFeatures";
-import { PropertySearch } from "components/PropretySearch";
+import { PropertySearch } from "components/PropertySearch";
 import Image from "next/image";
 import { theme } from "theme";
 
@@ -14,24 +15,26 @@ export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
       case "acf/propertyfeatures": {
-        <PropertyFeatures
-          key={block.id}
-          price={block.attributes.price}
-          bathrooms={block.attributes.bathrooms}
-          bedrooms={block.attributes.bedrooms}
-          hasParking={block.attributes.has_parking}
-          petFriendly={block.attributes.pet_friendly}
-        />;
+        return (
+          <PropertyFeatures
+            key={block.id}
+            price={block.attributes.price}
+            bathrooms={block.attributes.bathrooms}
+            bedrooms={block.attributes.bedrooms}
+            hasParking={block.attributes.has_parking}
+            petFriendly={block.attributes.pet_friendly}
+          />
+        );
       }
       case "acf/formspreeform": {
         return (
           <FormSpreeForm
             key={block.id}
+            // formId={block.attributes.data.form_id}
             formId={block.attributes.data.form_id}
           />
         );
       }
-
       case "acf/ctabutton": {
         console.log("block blockrender", block.attributes);
         return (
@@ -57,6 +60,16 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
+      // case "core/post-title": {
+      //   return (
+      //     <PostTitle
+      //       key={block.id}
+      //       content={block.attributes.content}
+      //       level={block.attributes.level}
+      //       textAlign={block.attributes.textAlign}
+      //     />
+      //   );
+      // }
 
       case "core/post-title":
       case "core/heading": {

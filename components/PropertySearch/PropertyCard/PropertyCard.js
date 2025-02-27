@@ -1,3 +1,5 @@
+import { faBath, faBed, faCar, faDog } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import numeral from "numeral";
@@ -23,10 +25,13 @@ export const PropertyCard = ({
         <div className="flex justify-between">
           <div>
             {/* <FontAwesomeIcon icon={faBathtub} /> */}
+            <FontAwesomeIcon icon={faBath} />
+
             <span>{bathrooms}</span>
           </div>
 
           <div>
+            <FontAwesomeIcon icon={faBed} />
             {/* <FontAwesomeIcon icon={faBed} /> */}
             <span>{bedrooms}</span>
           </div>
@@ -36,6 +41,7 @@ export const PropertyCard = ({
             <div>
               {!hasParking && (
                 <>
+                  <FontAwesomeIcon icon={faCar} />
                   {/* <FontAwesomeIcon icon={faCar} /> */}
                   Parking Available
                 </>
@@ -44,6 +50,7 @@ export const PropertyCard = ({
             <div>
               {!petFriendly && (
                 <>
+                  <FontAwesomeIcon icon={faDog} />
                   {/* <FontAwesomeIcon icon={faCar} /> */}
                   petFriendly
                 </>
