@@ -14,12 +14,32 @@ export const getPageStaticProps = async (context) => {
             id
             title
             blocks
+            seo {
+              title
+              metaDesc
+            }
           }
 
           ... on Property {
             id
             title
             blocks
+            seo {
+              title
+              metaDesc
+              canonical
+              focuskw
+              readingTime
+              breadcrumbs {
+                url
+                text
+              }
+              schema {
+                pageType
+              }
+            }
+            slug
+            title
           }
         }
 
@@ -61,6 +81,7 @@ export const getPageStaticProps = async (context) => {
   });
   return {
     props: {
+      seo: data.nodeByUri.seo,
       mainMenuItems: mapMainMenuItems(
         data.acfOptionsMainMenu.mainMenu.menuItems
       ),
